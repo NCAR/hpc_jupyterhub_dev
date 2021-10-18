@@ -1,0 +1,33 @@
+#!/bin/bash
+
+vol="/opt/jupyterhub/var/jupyterhub"
+cfg="/opt/jupyterhub/etc/jupyterhub_config.py"
+exe="/opt/jupyterhub/bin/jupyterhub"
+
+if [ -f /opt/jupyterhub/etc/profile.d/conda.sh ]
+then
+    . /opt/jupyterhub/etc/profile.d/conda.sh
+fi
+
+if [ ! -d "${vol}" ]
+then
+    echo "Jupyterhub data directory doesn't exist. Exiting." 1>&2
+    exit 1
+fi
+cd ${vol}
+
+
+if [ ! -f "${cfg}" ]
+then
+    echo "Failed to find jupyterhub config file. Exiting." 1>&2
+    exit 1
+fi
+
+if [ ! -e "${exe}" ]
+then
+    echo "Failed to find jupyterhub executable. Exiting." 1>&2
+    exit 1
+fi
+
+
+${exe} -f ${config}
