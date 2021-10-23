@@ -46,5 +46,6 @@ RUN . /opt/jupyterhub/etc/profile.d/conda.sh && \
 COPY jupyterhub_config.py /opt/jupyterhub/etc/
 COPY run_jupyterhub /opt/jupyterhub/bin
 
-#CMD "/bin/bash /opt/jupyterhub/bin/run_jupyterhub"
-CMD "sleep 600"
+
+EXPOSE 8800/tcp
+CMD ["/bin/bash","/opt/jupyterhub/bin/run_jupyterhub"]

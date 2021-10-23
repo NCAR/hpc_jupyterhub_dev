@@ -1,9 +1,11 @@
 DOCKER_TAG      ?= jhubmono
 DOCKER_NAME     ?= jhubmono
 IP              ?= 192.168.100.33
-RUN_ARGS        ?= docker run -it -v $(DOCKER_NAME)_vol:/opt/jupyterhub/var/jupyterhub --name $(DOCKER_NAME)
+HUB_HOST_PORT   ?= 8800
+HUB_CONT_PORT   ?= 8800
+RUN_ARGS        ?= docker run -it -v $(DOCKER_NAME)_vol:/opt/jupyterhub/var/jupyterhub -p $(HUB_HOST_PORT):$(HUB_CONT_PORT) --name $(DOCKER_NAME) -h $(DOCKER_NAME)
 BUILD_ARGS      ?= --rm
-RUNNING         := $(shell docker ps -f "name=$(DOCKER_NAME)" | wc -l)
+RUNNING         := $(shell docker ps -f "name=$(DOCKER_NAME)" | wc -l | tr -d ' ')
 
 default: run
 
@@ -14,6 +16,7 @@ build:
 	docker volume create --label $(DOCKER_NAME)_vol $(DOCKER_NAME)_vol
 
 stop:
+	echo $(RUNNING)
 ifeq "$(RUNNING)" "2"
 	docker stop $(DOCKER_NAME) || true
 	docker rm $(DOCKER_NAME) || true
