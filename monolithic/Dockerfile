@@ -54,8 +54,8 @@ RUN . /opt/jupyterhub/etc/profile.d/conda.sh && \
 
 
 COPY jupyterhub_config.py /opt/jupyterhub/etc/
-COPY run_jupyterhub /opt/jupyterhub/bin
-
+COPY run_jupyterhub /opt/jupyterhub/bin/
+COPY sudospawner-singleuser /opt/jupyterhub/bin/
 
 EXPOSE 8800/tcp
 CMD ["/bin/bash","/opt/jupyterhub/bin/run_jupyterhub"]

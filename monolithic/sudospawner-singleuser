@@ -1,0 +1,4 @@
+#!/bin/bash -l
+
+export PATH=/opt/jupyterhub/bin:$PATH
+exec "jupyter-labhub" $@

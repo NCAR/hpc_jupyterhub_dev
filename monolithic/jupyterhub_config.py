@@ -34,6 +34,6 @@ c.ConfigurableHTTPProxy.api_url = f'http://{api_addr}:{api_port}'
 base_url = u'/'
 
 #c.JupyterHub.default_url = f'{base_url}/user/' + '{username}/lab'
-#c.JupyterHub.notebook_dir = u'/home/{username}'
+c.JupyterHub.notebook_dir = u'/home/{username}'
 c.JupyterHub.spawner_class = 'sudospawner.SudoSpawner'
 
