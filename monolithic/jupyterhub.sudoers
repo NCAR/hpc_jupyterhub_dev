@@ -1,0 +1,2 @@
+Runas_Alias JUPYTER_USERS = jupyter
+jupyter ALL=(%jupyterhub) NOPASSWD:SETENV: /opt/jupyterhub/bin/sudospawner

@@ -1,6 +1,5 @@
 # Basic JupyterHub Configuration File
 
-
 c = get_config()
 
 c.ConfigurableHTTPProxy.debug = False
@@ -36,6 +35,5 @@ base_url = u'/'
 
 #c.JupyterHub.default_url = f'{base_url}/user/' + '{username}/lab'
 #c.JupyterHub.notebook_dir = u'/home/{username}'
-
-#c.JupyterHub.spawner_class = 'sudospawner.SudoSpawner'
+c.JupyterHub.spawner_class = 'sudospawner.SudoSpawner'
 
